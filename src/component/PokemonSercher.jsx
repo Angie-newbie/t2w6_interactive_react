@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import '../App.css'
+import { useParams } from 'react-router-dom';
 
 export function PokemonSearcher(){
+
+  let{searchTerm} = useParams();
+
   // eslint-disable-next-line no-unused-vars
   let [pokemonData, setpokemonData] = useState({});
   let [pokemonName, setPokemonName] = useState("");
@@ -13,6 +17,15 @@ export function PokemonSearcher(){
   // equivallent to componentDidmount
   useEffect(() => {
     console.log("Use Effect says Hello");
+
+    if (searchTerm){
+      setPokemonSearchTerm(searchTerm);
+      getSpecificPokemon(searchTerm);
+
+    } else{
+      getRandomPokemon();
+    }
+
     getRandomPokemon();
     
     return(()=>{
