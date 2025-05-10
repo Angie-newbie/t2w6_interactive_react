@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../App.css'
 
 export function PokemonSearcher(){
@@ -8,6 +8,22 @@ export function PokemonSearcher(){
   let [pokemonId, setPokemonId] = useState(0);
   let [pokemonSearchTerm, setPokemonSearchTerm] = useState("");
 
+
+  // equivallent to componentDidmount
+  useEffect(() => {
+    console.log("Use Effect says Hello");
+    return(()=>{
+      console.log("Component is unmounting now");
+    })
+  }, []);
+  // equivallent to componentDidUpdate
+  useEffect(() => {
+    console.log("Use Effect says Hello on re-render");
+  });
+  // equivallent to componentDidUpdate for specific variable
+  useEffect(() => {
+    console.log("Use Effect says Hello, on update of pokemonName");
+  }, [pokemonName]);
 
 
 
