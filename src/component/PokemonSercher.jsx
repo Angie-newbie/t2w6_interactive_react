@@ -26,7 +26,7 @@ export function PokemonSearcher(){
       getRandomPokemon();
     }
 
-    getRandomPokemon();
+  
     
     return(()=>{
       console.log("Component is unmounting now");
