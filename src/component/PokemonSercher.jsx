@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../App.css'
 import { useParams } from 'react-router-dom';
+import { UserJwtContext } from '../context/UserJwtContext';
 
 export function PokemonSearcher(){
 
+  let userJwt = useContext(UserJwtContext);
+
+
   let{searchTerm} = useParams();
 
-  // eslint-disable-next-line no-unused-vars
-  let [pokemonData, setpokemonData] = useState({});
+ 
+//  let [pokemonData, setpokemonData] = useState({});
   let [pokemonName, setPokemonName] = useState("");
   let [pokemonSpriteUrl, setPokemonSpriteUrl] = useState("");
-  let [_, setPokemonId] = useState(0);
+  // let [_, setPokemonId] = useState(0);
   let [pokemonSearchTerm, setPokemonSearchTerm] = useState("");
 
 
@@ -25,24 +29,32 @@ export function PokemonSearcher(){
     } else{
       getRandomPokemon();
     }
+  
 
   
     
-    return(()=>{
-      console.log("Component is unmounting now");
-    })
+  //   return(()=>{
+  //     console.log("Component is unmounting now");
+  //   })
     
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // equivallent to componentDidUpdate
-  useEffect(() => {
-    console.log("Use Effect says Hello on re-render");
-  });
-  // equivallent to componentDidUpdate for specific variable
-  useEffect(() => {
-    console.log("Use Effect says Hello, on update of pokemonName");
-  }, [pokemonName]);
+  // // equivallent to componentDidUpdate
+  // useEffect(() => {
+  //   console.log("Use Effect says Hello on re-render");
+  // });
+  // // equivallent to componentDidUpdate for specific variable
+  // useEffect(() => {
+  //   console.log("Use Effect says Hello, on update of pokemonName");
+  // }, [pokemonName]);
 
+useEffect(() => {
+  if (!userJwt && pokemonSearchTerm.length>0) {
+ //
+  } else{
+    //
+  }
+}, [pokemonSearchTerm, userJwt]);
 
 
   const getRandomPokemon = async() => {
@@ -61,7 +73,7 @@ export function PokemonSearcher(){
     
     setPokemonName(data.name);
     setPokemonSpriteUrl(data.sprites.other.home.front_default);
-    setPokemonId(data.id);
+    // setPokemonId(data.id);
 
     // setpokemonData((previousState) => {
     //   return{
@@ -83,7 +95,7 @@ export function PokemonSearcher(){
   return(
     <>
       <h1>
-        This is a class Component
+        This is a function component!
       </h1>
       
       <button onClick = {getRandomPokemon}>

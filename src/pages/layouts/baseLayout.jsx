@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 
 
@@ -6,16 +6,35 @@ export function BaseLayout(){
     return(
         <>
             <header>
+                 <h1>
+                        Cool Pokemon Web
+                 </h1>
                 <nav>
-                    <h1>Header here</h1>
+                    <li>
+                        <Link to={"/"}>
+                            Home
+                        </Link>
+                    </li>
+
+                    <li>
+                        <Link to={"/about"}>
+                            About
+                        </Link>
+                    </li>
+
+                    <li>
+                        <Link to={"/pokemon"}>
+                            Pokemon Search
+                        </Link>
+                    </li>
 
                 </nav>
 
             </header>
 
-            <Outlet>
-
-            </Outlet>
+            <main>
+                <Outlet />
+            </main>
 
             <footer>
                 Copyright
@@ -23,5 +42,5 @@ export function BaseLayout(){
             </footer>
         
         </>
-    )
+    );
 }
