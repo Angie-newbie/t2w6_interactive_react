@@ -5,7 +5,7 @@ import { UserJwtContext } from '../context/UserJwtContext';
 
 export function PokemonSearcher(){
 
-  let userJwt = useContext(UserJwtContext);
+  let [userJwt] = useContext(UserJwtContext);
 
 
   let{searchTerm} = useParams();
@@ -106,8 +106,9 @@ useEffect(() => {
         <label htmlFor="pokemonNameInput"> Pokemon to search for: </label>
         <input 
           type = "text" 
-          name = "pokemonNameInput" 
-          id="pokemonNameInput" 
+          name = "pokemonNameInput"
+          data-testid = "pokemonNameInput"
+          id="brokenpokemonNameInput" 
           value={pokemonSearchTerm}
           onChange={(event)=>{
             setPokemonSearchTerm(event.target.value);
