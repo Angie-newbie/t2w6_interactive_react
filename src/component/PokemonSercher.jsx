@@ -123,7 +123,7 @@ useEffect(() => {
             
         </input>
         
-        <button onClick={() => getSpecificPokemon(setPokemonSearchTerm)}>
+        <button data-testid = "pokemonSpecificSearchButton" onClick={() => getSpecificPokemon(setPokemonSearchTerm)}>
           Search
         </button>
       </section>
@@ -134,7 +134,7 @@ useEffect(() => {
       </h1>
       }
       {pokemonSpriteUrl.length > 0 &&
-        <img src={pokemonSpriteUrl} />
+        <img data-testid = "pokemonSprite"src={pokemonSpriteUrl} />
       }
       
     </>
